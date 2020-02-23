@@ -1,0 +1,1379 @@
+{
+  "contractName": "Model",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.8+commit.23d335f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/Users/anthonycohen/Projects/Insurance-pool/contracts/Model.sol\":\"Model\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/anthonycohen/Projects/Insurance-pool/contracts/Model.sol\":{\"keccak256\":\"0x6bfee27c2bffc4d5266070afeedb38336af3decd960f79ee074a87b4a0b8338f\",\"urls\":[\"bzzr://5c65f0884f8115e7622049b94f0cdcb3d82e168852e742d208698a67f3254236\"]},\"/Users/anthonycohen/Projects/Insurance-pool/contracts/Owned.sol\":{\"keccak256\":\"0x7ab0b1fd7aec83c5e5fab13a49d73ce3aae8ca7048e8a1c50f39681eb46bdddb\",\"urls\":[\"bzzr://7114b65311c2c898fafe24aae3b9f6df1c8858d849f1be3854e2024a85b3d53d\"]}},\"version\":1}",
+  "bytecode": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506101f0806100536000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80638da5cb5b1461003b578063f2fde38b14610085575b600080fd5b6100436100c9565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100c76004803603602081101561009b57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506100ee565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461014757600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141561018157600080fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820a6481e8919111c71cb785d68a9ee8b2799d2ab2097a243dcd8e91c5134a347900029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80638da5cb5b1461003b578063f2fde38b14610085575b600080fd5b6100436100c9565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6100c76004803603602081101561009b57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506100ee565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161461014757600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141561018157600080fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505056fea165627a7a72305820a6481e8919111c71cb785d68a9ee8b2799d2ab2097a243dcd8e91c5134a347900029",
+  "sourceMap": "57:659:3:-;;;124:10:4;116:5;;:18;;;;;;;;;;;;;;;;;;57:659:3;;;;;;",
+  "deployedSourceMap": "57:659:3:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;57:659:3;;;;;;;;;;;;;;;;;;;;;;;;56:20:4;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;234:139;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;234:139:4;;;;;;;;;;;;;;;;;;;:::i;:::-;;56:20;;;;;;;;;;;;;:::o;234:139::-;201:5;;;;;;;;;;;187:19;;:10;:19;;;179:28;;;;;;335:1;315:22;;:8;:22;;;;307:31;;;;;;357:8;349:5;;:16;;;;;;;;;;;;;;;;;;234:139;:::o",
+  "source": "pragma solidity >=0.4.25 <0.6.0;\n\nimport \"./Owned.sol\";\n\ncontract Model is Owned {\n\n    struct User {\n        mapping (uint8 => UserPool) userPools;\n        mapping (uint16 => Vote) userVotes;\n        uint8 userPoolsSize;\n        uint8 userVotesSize;\n    }\n\n    struct Pool {\n        uint16 id;\n        uint8 poolType;\n        uint8[] exchanges;\n    }\n\n    struct UserPool {\n        uint16 idPool;\n        uint8 exchange;\n    }\n\n    struct Survey {\n        uint16 id;\n        bytes32 title;\n        bytes32 description;\n        uint8 idExchange;\n        uint date;\n    }\n\n    struct Hacking {\n        uint8 idExchange;\n        uint date;\n    }\n\n    struct Vote {\n        uint16 idSurvey;\n        bool status;\n    }\n}\n",
+  "sourcePath": "/Users/anthonycohen/Projects/Insurance-pool/contracts/Model.sol",
+  "ast": {
+    "absolutePath": "/Users/anthonycohen/Projects/Insurance-pool/contracts/Model.sol",
+    "exportedSymbols": {
+      "Model": [
+        329
+      ]
+    },
+    "id": 330,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 278,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".25",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:3"
+      },
+      {
+        "absolutePath": "/Users/anthonycohen/Projects/Insurance-pool/contracts/Owned.sol",
+        "file": "./Owned.sol",
+        "id": 279,
+        "nodeType": "ImportDirective",
+        "scope": 330,
+        "sourceUnit": 375,
+        "src": "34:21:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 280,
+              "name": "Owned",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 374,
+              "src": "75:5:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Owned_$374",
+                "typeString": "contract Owned"
+              }
+            },
+            "id": 281,
+            "nodeType": "InheritanceSpecifier",
+            "src": "75:5:3"
+          }
+        ],
+        "contractDependencies": [
+          374
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 329,
+        "linearizedBaseContracts": [
+          329,
+          374
+        ],
+        "name": "Model",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Model.User",
+            "id": 294,
+            "members": [
+              {
+                "constant": false,
+                "id": 285,
+                "name": "userPools",
+                "nodeType": "VariableDeclaration",
+                "scope": 294,
+                "src": "110:37:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_UserPool_$307_storage_$",
+                  "typeString": "mapping(uint8 => struct Model.UserPool)"
+                },
+                "typeName": {
+                  "id": 284,
+                  "keyType": {
+                    "id": 282,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "119:5:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "110:27:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_UserPool_$307_storage_$",
+                    "typeString": "mapping(uint8 => struct Model.UserPool)"
+                  },
+                  "valueType": {
+                    "contractScope": null,
+                    "id": 283,
+                    "name": "UserPool",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 307,
+                    "src": "128:8:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_UserPool_$307_storage_ptr",
+                      "typeString": "struct Model.UserPool"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 289,
+                "name": "userVotes",
+                "nodeType": "VariableDeclaration",
+                "scope": 294,
+                "src": "157:34:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint16_$_t_struct$_Vote_$328_storage_$",
+                  "typeString": "mapping(uint16 => struct Model.Vote)"
+                },
+                "typeName": {
+                  "id": 288,
+                  "keyType": {
+                    "id": 286,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "166:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "157:24:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint16_$_t_struct$_Vote_$328_storage_$",
+                    "typeString": "mapping(uint16 => struct Model.Vote)"
+                  },
+                  "valueType": {
+                    "contractScope": null,
+                    "id": 287,
+                    "name": "Vote",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 328,
+                    "src": "176:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Vote_$328_storage_ptr",
+                      "typeString": "struct Model.Vote"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 291,
+                "name": "userPoolsSize",
+                "nodeType": "VariableDeclaration",
+                "scope": 294,
+                "src": "201:19:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 290,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "201:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 293,
+                "name": "userVotesSize",
+                "nodeType": "VariableDeclaration",
+                "scope": 294,
+                "src": "230:19:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 292,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "230:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "User",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "88:168:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.Pool",
+            "id": 302,
+            "members": [
+              {
+                "constant": false,
+                "id": 296,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 302,
+                "src": "284:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 295,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "284:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 298,
+                "name": "poolType",
+                "nodeType": "VariableDeclaration",
+                "scope": 302,
+                "src": "303:14:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 297,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "303:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 301,
+                "name": "exchanges",
+                "nodeType": "VariableDeclaration",
+                "scope": 302,
+                "src": "327:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                  "typeString": "uint8[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 299,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "327:5:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "id": 300,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "327:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                    "typeString": "uint8[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Pool",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "262:89:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.UserPool",
+            "id": 307,
+            "members": [
+              {
+                "constant": false,
+                "id": 304,
+                "name": "idPool",
+                "nodeType": "VariableDeclaration",
+                "scope": 307,
+                "src": "383:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 303,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "383:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 306,
+                "name": "exchange",
+                "nodeType": "VariableDeclaration",
+                "scope": 307,
+                "src": "406:14:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 305,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "406:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "UserPool",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "357:70:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.Survey",
+            "id": 318,
+            "members": [
+              {
+                "constant": false,
+                "id": 309,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "457:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 308,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "457:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 311,
+                "name": "title",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "476:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 310,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "476:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 313,
+                "name": "description",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "499:19:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 312,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "499:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 315,
+                "name": "idExchange",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "528:16:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 314,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "528:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 317,
+                "name": "date",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "554:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 316,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "554:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Survey",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "433:137:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.Hacking",
+            "id": 323,
+            "members": [
+              {
+                "constant": false,
+                "id": 320,
+                "name": "idExchange",
+                "nodeType": "VariableDeclaration",
+                "scope": 323,
+                "src": "601:16:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 319,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "601:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 322,
+                "name": "date",
+                "nodeType": "VariableDeclaration",
+                "scope": 323,
+                "src": "627:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 321,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "627:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Hacking",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "576:67:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.Vote",
+            "id": 328,
+            "members": [
+              {
+                "constant": false,
+                "id": 325,
+                "name": "idSurvey",
+                "nodeType": "VariableDeclaration",
+                "scope": 328,
+                "src": "671:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 324,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "671:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 327,
+                "name": "status",
+                "nodeType": "VariableDeclaration",
+                "scope": 328,
+                "src": "696:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 326,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "696:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Vote",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "649:65:3",
+            "visibility": "public"
+          }
+        ],
+        "scope": 330,
+        "src": "57:659:3"
+      }
+    ],
+    "src": "0:717:3"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/anthonycohen/Projects/Insurance-pool/contracts/Model.sol",
+    "exportedSymbols": {
+      "Model": [
+        329
+      ]
+    },
+    "id": 330,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 278,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".25",
+          "<",
+          "0.6",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:32:3"
+      },
+      {
+        "absolutePath": "/Users/anthonycohen/Projects/Insurance-pool/contracts/Owned.sol",
+        "file": "./Owned.sol",
+        "id": 279,
+        "nodeType": "ImportDirective",
+        "scope": 330,
+        "sourceUnit": 375,
+        "src": "34:21:3",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 280,
+              "name": "Owned",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 374,
+              "src": "75:5:3",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Owned_$374",
+                "typeString": "contract Owned"
+              }
+            },
+            "id": 281,
+            "nodeType": "InheritanceSpecifier",
+            "src": "75:5:3"
+          }
+        ],
+        "contractDependencies": [
+          374
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 329,
+        "linearizedBaseContracts": [
+          329,
+          374
+        ],
+        "name": "Model",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Model.User",
+            "id": 294,
+            "members": [
+              {
+                "constant": false,
+                "id": 285,
+                "name": "userPools",
+                "nodeType": "VariableDeclaration",
+                "scope": 294,
+                "src": "110:37:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_UserPool_$307_storage_$",
+                  "typeString": "mapping(uint8 => struct Model.UserPool)"
+                },
+                "typeName": {
+                  "id": 284,
+                  "keyType": {
+                    "id": 282,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "119:5:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "110:27:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint8_$_t_struct$_UserPool_$307_storage_$",
+                    "typeString": "mapping(uint8 => struct Model.UserPool)"
+                  },
+                  "valueType": {
+                    "contractScope": null,
+                    "id": 283,
+                    "name": "UserPool",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 307,
+                    "src": "128:8:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_UserPool_$307_storage_ptr",
+                      "typeString": "struct Model.UserPool"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 289,
+                "name": "userVotes",
+                "nodeType": "VariableDeclaration",
+                "scope": 294,
+                "src": "157:34:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_mapping$_t_uint16_$_t_struct$_Vote_$328_storage_$",
+                  "typeString": "mapping(uint16 => struct Model.Vote)"
+                },
+                "typeName": {
+                  "id": 288,
+                  "keyType": {
+                    "id": 286,
+                    "name": "uint16",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "166:6:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint16",
+                      "typeString": "uint16"
+                    }
+                  },
+                  "nodeType": "Mapping",
+                  "src": "157:24:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_mapping$_t_uint16_$_t_struct$_Vote_$328_storage_$",
+                    "typeString": "mapping(uint16 => struct Model.Vote)"
+                  },
+                  "valueType": {
+                    "contractScope": null,
+                    "id": 287,
+                    "name": "Vote",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 328,
+                    "src": "176:4:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_Vote_$328_storage_ptr",
+                      "typeString": "struct Model.Vote"
+                    }
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 291,
+                "name": "userPoolsSize",
+                "nodeType": "VariableDeclaration",
+                "scope": 294,
+                "src": "201:19:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 290,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "201:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 293,
+                "name": "userVotesSize",
+                "nodeType": "VariableDeclaration",
+                "scope": 294,
+                "src": "230:19:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 292,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "230:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "User",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "88:168:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.Pool",
+            "id": 302,
+            "members": [
+              {
+                "constant": false,
+                "id": 296,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 302,
+                "src": "284:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 295,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "284:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 298,
+                "name": "poolType",
+                "nodeType": "VariableDeclaration",
+                "scope": 302,
+                "src": "303:14:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 297,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "303:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 301,
+                "name": "exchanges",
+                "nodeType": "VariableDeclaration",
+                "scope": 302,
+                "src": "327:17:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                  "typeString": "uint8[]"
+                },
+                "typeName": {
+                  "baseType": {
+                    "id": 299,
+                    "name": "uint8",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "327:5:3",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint8",
+                      "typeString": "uint8"
+                    }
+                  },
+                  "id": 300,
+                  "length": null,
+                  "nodeType": "ArrayTypeName",
+                  "src": "327:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_uint8_$dyn_storage_ptr",
+                    "typeString": "uint8[]"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Pool",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "262:89:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.UserPool",
+            "id": 307,
+            "members": [
+              {
+                "constant": false,
+                "id": 304,
+                "name": "idPool",
+                "nodeType": "VariableDeclaration",
+                "scope": 307,
+                "src": "383:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 303,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "383:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 306,
+                "name": "exchange",
+                "nodeType": "VariableDeclaration",
+                "scope": 307,
+                "src": "406:14:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 305,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "406:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "UserPool",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "357:70:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.Survey",
+            "id": 318,
+            "members": [
+              {
+                "constant": false,
+                "id": 309,
+                "name": "id",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "457:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 308,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "457:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 311,
+                "name": "title",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "476:13:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 310,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "476:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 313,
+                "name": "description",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "499:19:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bytes32",
+                  "typeString": "bytes32"
+                },
+                "typeName": {
+                  "id": 312,
+                  "name": "bytes32",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "499:7:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 315,
+                "name": "idExchange",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "528:16:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 314,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "528:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 317,
+                "name": "date",
+                "nodeType": "VariableDeclaration",
+                "scope": 318,
+                "src": "554:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 316,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "554:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Survey",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "433:137:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.Hacking",
+            "id": 323,
+            "members": [
+              {
+                "constant": false,
+                "id": 320,
+                "name": "idExchange",
+                "nodeType": "VariableDeclaration",
+                "scope": 323,
+                "src": "601:16:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 319,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "601:5:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 322,
+                "name": "date",
+                "nodeType": "VariableDeclaration",
+                "scope": 323,
+                "src": "627:9:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 321,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "627:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Hacking",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "576:67:3",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "Model.Vote",
+            "id": 328,
+            "members": [
+              {
+                "constant": false,
+                "id": 325,
+                "name": "idSurvey",
+                "nodeType": "VariableDeclaration",
+                "scope": 328,
+                "src": "671:15:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint16",
+                  "typeString": "uint16"
+                },
+                "typeName": {
+                  "id": 324,
+                  "name": "uint16",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "671:6:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint16",
+                    "typeString": "uint16"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 327,
+                "name": "status",
+                "nodeType": "VariableDeclaration",
+                "scope": 328,
+                "src": "696:11:3",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 326,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "696:4:3",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "Vote",
+            "nodeType": "StructDefinition",
+            "scope": 329,
+            "src": "649:65:3",
+            "visibility": "public"
+          }
+        ],
+        "scope": 330,
+        "src": "57:659:3"
+      }
+    ],
+    "src": "0:717:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.8+commit.23d335f2.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.10",
+  "updatedAt": "2020-02-09T11:31:44.533Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

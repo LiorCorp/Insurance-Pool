@@ -1,0 +1,14 @@
+<div class="home-title">
+  <p>Your ETH are in trading platforms ?</p>
+  <p>Insure them against hacking...</p>
+</div>
+
+<div class="home-container">
+  <app-pool-tile
+    *ngFor="let pool of pools | async"
+    class="pool-tile"
+    [poolIcon]="pool.icon"
+    [collateral]="pool.collateral"
+    [coverage]="pool.coverage"
+  ></app-pool-tile>
+</div>

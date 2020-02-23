@@ -1,0 +1,19 @@
+{
+	"pool": [
+		{
+			"icon": "assets/img/eth-green.svg",
+			"collateral": "1",
+			"coverage": "5"
+        },
+        {
+			"icon": "assets/img/eth-blue.svg",
+			"collateral": "5",
+			"coverage": "25"
+        },
+        {
+			"icon": "assets/img/eth-orange.svg",
+			"collateral": "10",
+			"coverage": "50"
+        }
+	]
+}

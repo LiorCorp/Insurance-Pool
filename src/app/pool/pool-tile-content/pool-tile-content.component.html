@@ -1,0 +1,29 @@
+<img class="ethIcon" src="{{ poolIcon }}" alt="eth" />
+<div class="poolType" [ngClass]="{
+    poolType1: collateral === '1',
+    poolType2: collateral === '5',
+    poolType3: collateral === '10'
+  }">
+  <p>Coverage : {{coverage}} ETH</p>
+  <p>Collateral : {{ collateral }} ETH</p>
+  <p>Duration : 3 months</p>
+</div>
+
+<select (change)="onChange($event.target.value)" class="form-control form-control-lg selectExchange">
+  <option>Select Exchange</option>
+  <option value="1">Binance</option>
+  <option value="2">Bittrex</option>
+  <option value="3">Coinbase</option>
+</select>
+
+<button
+  class="btn"
+  (click)="joinPool(collateral,1)"
+  [ngClass]="{
+    blueButton: collateral === '1',
+    redButton: collateral === '5',
+    goldButton: collateral === '10'
+  }"
+>
+  Join Pool
+</button>

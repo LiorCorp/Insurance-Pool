@@ -1,0 +1,40 @@
+{
+    "exchanges": [
+      {
+        "id": 1,
+        "name": "binance"
+      },
+      {
+        "id": 2,
+        "name": "bitmex"
+      },
+      {
+        "id": 3,
+        "name": "bittrex"
+      },
+      {
+        "id": 4,
+        "name": "coinbase"
+      },
+      {
+        "id": 5,
+        "name": "bitfinex"
+      },
+      {
+        "id": 6,
+        "name": "okex"
+      },
+      {
+        "id": 7,
+        "name": "bibox"
+      },
+      {
+        "id": 8,
+        "name": "kraken"
+      },
+      {
+        "id": 9,
+        "name": "bitmax"
+      }
+    ]
+  }
