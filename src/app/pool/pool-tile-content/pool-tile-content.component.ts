@@ -1,6 +1,7 @@
 import {Component, OnInit, Input} from "@angular/core";
 import {Observable} from "rxjs";
 import {PoolService} from "src/app/eth-services/pool.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-pool-tile-content",
@@ -15,7 +16,7 @@ export class PoolTileContentComponent implements OnInit {
   transferFrom: string;
   exchangeId: number;
 
-  constructor(private readonly poolservice: PoolService) {}
+  constructor(private readonly poolservice: PoolService, private readonly router: Router) {}
 
   ngOnInit(): void {
     this.initAndDisplayAccount();
@@ -34,10 +35,12 @@ export class PoolTileContentComponent implements OnInit {
   }
 
   joinPool(amount: number, poolType: number) {
+    let that = this;
     this.poolservice
-      .joinPool(this.transferFrom, amount.toString(), this.exchangeId, poolType)
+      .joinPool(this.transferFrom, '0', this.exchangeId, poolType)
       .then(function(res) {
         console.log("transfer success");
+        that.router.navigate(['/dashboard'])
       })
       .catch(function(error) {
         console.log(error);

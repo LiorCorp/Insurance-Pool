@@ -10,6 +10,7 @@ import {HomeComponent} from "./home/home.component";
 import {HttpClientModule} from "@angular/common/http";
 import { PoolTileComponent } from './pool/pool-tile/pool-tile.component';
 import { PoolTileContentComponent } from './pool/pool-tile-content/pool-tile-content.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PoolTileContentComponent } from './pool/pool-tile-content/pool-tile-con
     NavbarComponent,
     HomeComponent,
     PoolTileComponent,
-    PoolTileContentComponent
+    PoolTileContentComponent,
+    DashboardComponent
   ],
   imports: [
     NgbModule,
