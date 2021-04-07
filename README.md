@@ -1,3 +1,5 @@
+Insurance Pool Decentralized in Ethereum Blockchain
+
 # Insurance DAPP
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.1.
